@@ -10,16 +10,16 @@ module single_port_memory #(
     inout  wire [DWIDTH-1:0]   data   // Bidirectional data bus
 );
 
-    // Memory array with 2^AWIDTH locations
-    reg [DWIDTH-1:0] mem [0:(2**AWIDTH)-1];
+    // memory array with 2^AWIDTH locations
+    reg [DWIDTH-1:0] array [0:(2**AWIDTH)-1];
 
     // Synchronous write
     always @(posedge clk) begin
         if (wr)
-            mem[addr] <= data;
+            array[addr] <= data;
     end
 
     // Asynchronous read
-    assign data = rd ? mem[addr] : {DWIDTH{1'bz}};
+    assign data = rd ? array[addr] : {DWIDTH{1'bz}};
 
 endmodule
