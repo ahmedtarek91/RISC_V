@@ -1,11 +1,12 @@
-module TOP (
+module VERI_RISC (
     input clk,
-    input rst
+    input rst, 
+    output halt
 );
     wire [2:0] opcode, phase;
     wire [4:0] pc_addr, ir_addr, addr;
     wire [7:0] data, ac_out, alu_out; 
-    wire zero, rd, wr, sel, ld_ir, inc_pc, halt, ld_pc, data_e, ld_ac;
+    wire zero, rd, wr, sel, ld_ir, inc_pc, ld_pc, data_e, ld_ac;
 
     counter #(.WIDTH(3)) counter_clk (
         .clk(clk),
